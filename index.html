@@ -951,9 +951,15 @@
             
             /* Fix model cards alignment and height */
             #models > div > div {
-                min-height: 650px !important;
+                min-height: 700px !important;
                 display: flex !important;
                 flex-direction: column !important;
+            }
+            
+            @media (max-width: 480px) {
+                #models > div > div {
+                    min-height: 600px !important;
+                }
             }
             
             #models > div > div > div {
@@ -1532,7 +1538,7 @@
                                     <p style="color: #333; font-size: 14px; font-weight: 500;">ширина пролета</p>
                                 </div>
                                 <div style="text-align: right;">
-                                    <p style="color: #22C55E; font-size: 28px; font-weight: 700; margin: 0;">400 м²</p>
+                                    <p style="color: #22C55E; font-size: 28px; font-weight: 700; margin: 0;">400&nbsp;м²</p>
                                     <p style="color: #333; font-size: 14px; font-weight: 500;">минимальная площадь</p>
                                 </div>
                             </div>
@@ -1593,7 +1599,7 @@
                                     <p style="font-size: 14px; color: white; font-weight: 600;">ширина пролета</p>
                                 </div>
                                 <div style="text-align: right;">
-                                    <p style="font-size: 28px; font-weight: 700; margin: 0; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">500 м²</p>
+                                    <p style="font-size: 28px; font-weight: 700; margin: 0; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">500&nbsp;м²</p>
                                     <p style="font-size: 14px; color: white; font-weight: 600;">минимальная площадь</p>
                                 </div>
                             </div>
@@ -1649,7 +1655,7 @@
                                     <p style="font-size: 14px; color: white; font-weight: 600;">ширина пролета</p>
                                 </div>
                                 <div style="text-align: right;">
-                                    <p style="font-size: 28px; font-weight: 700; margin: 0; color: white;">600 м²</p>
+                                    <p style="font-size: 28px; font-weight: 700; margin: 0; color: white;">600&nbsp;м²</p>
                                     <p style="font-size: 14px; color: white; font-weight: 600;">минимальная площадь</p>
                                 </div>
                             </div>
