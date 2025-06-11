@@ -1087,6 +1087,28 @@
                 margin-top: 40px !important;
             }
             
+            /* Fix models section spacing on mobile */
+            #models {
+                padding: 40px 0 !important;
+            }
+            
+            #models div[style*="text-align: center; margin-bottom: 80px"] {
+                margin-bottom: 30px !important;
+            }
+            
+            #models p[style*="margin-bottom: 20px"] {
+                margin-bottom: 10px !important;
+            }
+            
+            #models h2[style*="margin-bottom: 20px"] {
+                margin-bottom: 15px !important;
+            }
+            
+            #models p[style*="font-size: 20px"] {
+                font-size: 16px !important;
+                line-height: 1.4 !important;
+            }
+            
             /* Fix gaps in flex and grid */
             div[style*="gap: 80px"] {
                 gap: 30px !important;
@@ -1130,6 +1152,11 @@
             
             /* Hide 3D model on mobile */
             #greenhouse-3d {
+                display: none !important;
+            }
+            
+            /* Hide floating leaves on mobile to save performance */
+            .floating-leaf {
                 display: none !important;
             }
             
