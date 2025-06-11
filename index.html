@@ -1004,11 +1004,17 @@
             
             /* Fix all sections padding */
             section[style*="padding: 120px 0"] {
-                padding: 60px 0 !important;
+                padding: 30px 0 !important;
             }
             
             section[style*="padding: 80px 0"] {
-                padding: 60px 0 !important;
+                padding: 30px 0 !important;
+            }
+            
+            /* Specifically target models section to fix the white space issue */
+            #models[style*="padding"] {
+                padding-top: 20px !important;
+                padding-bottom: 20px !important;
             }
             
             /* Fix overflow issues */
@@ -1087,13 +1093,25 @@
                 margin-top: 40px !important;
             }
             
-            /* Fix models section spacing on mobile */
+            /* Fix models section spacing on mobile - ULTRA AGGRESSIVE */
+            body section#models,
+            body section#models[style*="padding"],
+            body section#models[style*="padding: 120px 0"],
+            section#models.models,
             #models {
-                padding: 40px 0 !important;
+                padding: 20px 0 !important;
+                padding-top: 20px !important;
+                padding-bottom: 20px !important;
             }
             
-            #models div[style*="text-align: center; margin-bottom: 80px"] {
-                margin-bottom: 30px !important;
+            body #models div[style*="text-align: center; margin-bottom: 80px"],
+            #models > div > div[style*="text-align: center"],
+            #models .container > div:first-child {
+                margin-bottom: 20px !important;
+            }
+            
+            #models p[style*="margin-bottom: 10px"] {
+                margin-bottom: 5px !important;
             }
             
             #models p[style*="margin-bottom: 20px"] {
@@ -1101,12 +1119,17 @@
             }
             
             #models h2[style*="margin-bottom: 20px"] {
-                margin-bottom: 15px !important;
+                margin-bottom: 10px !important;
             }
             
             #models p[style*="font-size: 20px"] {
                 font-size: 16px !important;
                 line-height: 1.4 !important;
+            }
+            
+            /* Remove model cards bottom margin on mobile */
+            #models div[style*="grid-template-columns: repeat(3, 1fr)"][style*="margin-bottom: 80px"] {
+                margin-bottom: 20px !important;
             }
             
             /* Fix gaps in flex and grid */
@@ -1158,6 +1181,11 @@
             /* Hide floating leaves on mobile to save performance */
             .floating-leaf {
                 display: none !important;
+            }
+            
+            /* Last resort - shift models content up */
+            #models .container {
+                transform: translateY(-20px);
             }
             
             #specifications div[style*="height: 400px"] {
@@ -3389,6 +3417,36 @@
             }
         }
 
+        // Fix mobile spacing issues
+        function fixMobileSpacing() {
+            if (window.innerWidth <= 768) {
+                const modelsSection = document.getElementById('models');
+                if (modelsSection) {
+                    modelsSection.style.paddingTop = '20px';
+                    modelsSection.style.paddingBottom = '20px';
+                }
+                
+                // Fix header div in models section
+                const modelsHeader = document.querySelector('#models div[style*="text-align: center; margin-bottom: 80px"]');
+                if (modelsHeader) {
+                    modelsHeader.style.marginBottom = '20px';
+                }
+                
+                // Fix all sections padding
+                document.querySelectorAll('section[style*="padding: 120px 0"], section[style*="padding: 80px 0"]').forEach(section => {
+                    section.style.paddingTop = '30px';
+                    section.style.paddingBottom = '30px';
+                });
+            }
+        }
+        
+        // Run on load and resize
+        window.addEventListener('load', fixMobileSpacing);
+        window.addEventListener('resize', fixMobileSpacing);
+        
+        // Run immediately
+        fixMobileSpacing();
+        
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
